@@ -235,6 +235,9 @@
     <Filter Include="Features\Combat">
       <UniqueIdentifier>{a7e69fbf-3ca6-470a-abde-6380959510c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Features\Combat\AntiAimPunch">
+      <UniqueIdentifier>{725f9128-48b8-442d-9d10-c7056a11a1d0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Features\Combat\SniperRifles">
       <UniqueIdentifier>{4abe2bc9-1abb-4667-8119-82968a9df3d8}</UniqueIdentifier>
     </Filter>
@@ -746,6 +749,9 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="CS2\Classes\CCSPlayer_WeaponServices.h">
+      <Filter>CS2\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CS2\Classes\CCSPlayer_AimPunchServices.h">
       <Filter>CS2\Classes</Filter>
     </ClInclude>
     <ClInclude Include="CS2\Classes\CCSWeaponBaseVData.h">
@@ -1854,6 +1860,15 @@
     </ClInclude>
     <ClInclude Include="CS2\Constants\CrosshairColorIndex.h">
       <Filter>CS2\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Combat\AntiAimPunch\AntiAimPunch.h">
+      <Filter>Features\Combat\AntiAimPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Combat\AntiAimPunch\AntiAimPunchConfigVariables.h">
+      <Filter>Features\Combat\AntiAimPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Combat\AntiAimPunch\AntiAimPunchState.h">
+      <Filter>Features\Combat\AntiAimPunch</Filter>
     </ClInclude>
     <ClInclude Include="Features\Combat\SniperRifles\NoScopeInaccuracyVis\NoScopeInaccuracyVis.h">
       <Filter>Features\Combat\SniperRifles\NoScopeInaccuracyVis</Filter>

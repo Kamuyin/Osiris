@@ -10,6 +10,7 @@ namespace cs2
 
 struct CCSPlayer_HostageServices;
 struct CCSPlayer_WeaponServices;
+struct CCSPlayer_AimPunchServices;
 
 struct C_CSPlayerPawn : C_BaseModelEntity {
     using m_bGunGameImmunity = bool;
@@ -21,6 +22,8 @@ struct C_CSPlayerPawn : C_BaseModelEntity {
     using m_flFlashBangTime = float;
     using sceneObjectUpdaterHandle = SceneObjectUpdaterHandle_t*;
     using m_bIsScoped = bool;
+    using m_pAimPunchServices = CCSPlayer_AimPunchServices*;
+    using m_iShotsFired = int;
 };
 
 }

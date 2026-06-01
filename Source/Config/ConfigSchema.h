@@ -32,6 +32,11 @@ private:
         configConversion.boolean(u8"Enabled", loadVariable<no_scope_inaccuracy_vis_vars::Enabled>(), saveVariable<no_scope_inaccuracy_vis_vars::Enabled>());
         configConversion.endObject();
 
+        configConversion.beginObject(u8"AntiAimPunch");
+        configConversion.boolean(u8"Enabled", loadVariable<anti_aim_punch_vars::Enabled>(), saveVariable<anti_aim_punch_vars::Enabled>());
+        configConversion.uint(u8"MinBullets", loadVariable<anti_aim_punch_vars::MinBullets>(), saveVariable<anti_aim_punch_vars::MinBullets>());
+        configConversion.endObject();
+
         configConversion.endObject();
     }
 

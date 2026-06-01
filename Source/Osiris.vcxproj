@@ -26,6 +26,7 @@
     <ClInclude Include="Config\ConfigVariables.h" />
     <ClInclude Include="Config\ConfigVariableTypes.h" />
     <ClInclude Include="Config\RangeConstrainedVariableParams.h" />
+    <ClInclude Include="CS2\Classes\CCSPlayer_AimPunchServices.h" />
     <ClInclude Include="CS2\Classes\CCSPlayer_HostageServices.h" />
     <ClInclude Include="CS2\Classes\CCSPlayer_WeaponServices.h" />
     <ClInclude Include="CS2\Classes\CCSWeaponBaseVData.h" />
@@ -118,6 +119,9 @@
     <ClInclude Include="CS2\Panorama\Transform3D.h" />
     <ClInclude Include="EntryPoints\EntryPoints.h" />
     <ClInclude Include="EntryPoints\GuiEntryPoints.h" />
+    <ClInclude Include="Features\Combat\AntiAimPunch\AntiAimPunch.h" />
+    <ClInclude Include="Features\Combat\AntiAimPunch\AntiAimPunchConfigVariables.h" />
+    <ClInclude Include="Features\Combat\AntiAimPunch\AntiAimPunchState.h" />
     <ClInclude Include="Features\Combat\SniperRifles\NoScopeInaccuracyVis\NoScopeInaccuracyVis.h" />
     <ClInclude Include="Features\Combat\SniperRifles\NoScopeInaccuracyVis\NoScopeInaccuracyVisConfigVariables.h" />
     <ClInclude Include="Features\Combat\SniperRifles\NoScopeInaccuracyVis\NoScopeInaccuracyVisParams.h" />

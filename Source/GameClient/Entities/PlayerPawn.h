@@ -175,6 +175,16 @@ public:
         return getActiveWeapon().isSniperRifle();
     }
 
+    [[nodiscard]] cs2::Vector* aimPunchAnglePtr() const noexcept
+    {
+        return hookContext.patternSearchResults().template get<OffsetToAimPunchAngle>().of(aimPunchServices()).get();
+    }
+
+    [[nodiscard]] auto shotsFired() const noexcept
+    {
+        return hookContext.patternSearchResults().template get<OffsetToShotsFired>().of(playerPawn).toOptional();
+    }
+
 private:
     [[nodiscard]] auto sceneObjectUpdaterHandle() const noexcept
     {
@@ -184,6 +194,11 @@ private:
     [[nodiscard]] decltype(auto) hostageServices() const noexcept
     {
         return hookContext.template make<HostageServices>(hookContext.patternSearchResults().template get<OffsetToHostageServices>().of(playerPawn).valueOr(nullptr));
+    }
+
+    [[nodiscard]] cs2::CCSPlayer_AimPunchServices* aimPunchServices() const noexcept
+    {
+        return hookContext.patternSearchResults().template get<OffsetToAimPunchServices>().of(playerPawn).valueOr(nullptr);
     }
 
     [[nodiscard]] bool teammatesAreEnemies() const noexcept

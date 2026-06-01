@@ -468,6 +468,9 @@ u8R"(
   separator(noScope);
   createYesNoDropDown(noScope, "Visualize Inaccuracy When Not Using a Scope", 'combat', 'no_scope_inacc_vis');
 
+  var recoil = createSection(sniperRiflesTab, 'Recoil');
+  createYesNoDropDown(recoil, "Remove Aim Punch", 'combat', 'anti_aim_punch');
+
   $.Osiris.navigateToSubTab('combat', 'sniper_rifles');
 
   var hud = createTab('hud');
