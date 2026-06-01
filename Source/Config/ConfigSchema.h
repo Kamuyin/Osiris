@@ -224,8 +224,9 @@ private:
                 if constexpr (std::is_same_v<color::HueInteger, typename ConfigVariable::ValueType::ValueType>) {
                     color::HueInteger hue{std::clamp(saturateCast<color::HueInteger::UnderlyingType>(value), color::HueInteger::kMin, color::HueInteger::kMax)};
                     hookContext.config().template setVariableWithoutAutoSave<ConfigVariable>(typename ConfigVariable::ValueType{std::clamp(hue, ConfigVariable::ValueType::kMin, ConfigVariable::ValueType::kMax)});
-                } else if constexpr (std::is_same_v<std::uint8_t, typename ConfigVariable::ValueType::ValueType>) {
-                    hookContext.config().template setVariableWithoutAutoSave<ConfigVariable>(typename ConfigVariable::ValueType{std::clamp(saturateCast<std::uint8_t>(value), ConfigVariable::ValueType::kMin, ConfigVariable::ValueType::kMax)});
+                } else if constexpr (std::unsigned_integral<typename ConfigVariable::ValueType::ValueType>) {
+                    using UnderlyingType = typename ConfigVariable::ValueType::ValueType;
+                    hookContext.config().template setVariableWithoutAutoSave<ConfigVariable>(typename ConfigVariable::ValueType{std::clamp(saturateCast<UnderlyingType>(value), ConfigVariable::ValueType::kMin, ConfigVariable::ValueType::kMax)});
                 } else {
                     static_assert(!std::is_same_v<ConfigVariable, ConfigVariable>, "Unsupported type");
                 }
@@ -233,6 +234,10 @@ private:
         } else if constexpr (std::is_enum_v<typename ConfigVariable::ValueType>) {
             return [this](std::integral auto value) {
                 hookContext.config().template setVariableWithoutAutoSave<ConfigVariable>(static_cast<ConfigVariable::ValueType>(value));
+            };
+        } else if constexpr (std::unsigned_integral<typename ConfigVariable::ValueType> && !std::is_same_v<typename ConfigVariable::ValueType, bool>) {
+            return [this](std::unsigned_integral auto value) {
+                hookContext.config().template setVariableWithoutAutoSave<ConfigVariable>(saturateCast<typename ConfigVariable::ValueType>(value));
             };
         } else {
             return [this](ConfigVariable::ValueType value) {
