@@ -468,6 +468,11 @@ u8R"(
   separator(noScope);
   createYesNoDropDown(noScope, "Visualize Inaccuracy When Not Using a Scope", 'combat', 'no_scope_inacc_vis');
 
+  var grenadeHelper = createSection(sniperRiflesTab, 'Grenade Helper');
+  createYesNoDropDown(grenadeHelper, "Show Nearby Grenade Lineups", 'combat', 'grenade_helper');
+  separator(grenadeHelper);
+  createYesNoDropDown(grenadeHelper, "Show Aim Indicator", 'combat', 'grenade_helper_aim_indicator');
+
   $.Osiris.navigateToSubTab('combat', 'sniper_rifles');
 
   var hud = createTab('hud');

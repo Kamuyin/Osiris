@@ -32,6 +32,12 @@ private:
         configConversion.boolean(u8"Enabled", loadVariable<no_scope_inaccuracy_vis_vars::Enabled>(), saveVariable<no_scope_inaccuracy_vis_vars::Enabled>());
         configConversion.endObject();
 
+        configConversion.beginObject(u8"GrenadeHelper");
+        configConversion.boolean(u8"Enabled", loadVariable<grenade_helper_vars::Enabled>(), saveVariable<grenade_helper_vars::Enabled>());
+        configConversion.boolean(u8"ShowAimIndicator", loadVariable<grenade_helper_vars::ShowAimIndicator>(), saveVariable<grenade_helper_vars::ShowAimIndicator>());
+        configConversion.uint(u8"CircleDistance", loadVariable<grenade_helper_vars::CircleDistance>(), saveVariable<grenade_helper_vars::CircleDistance>());
+        configConversion.endObject();
+
         configConversion.endObject();
     }
 

@@ -175,6 +175,11 @@ public:
         return getActiveWeapon().isSniperRifle();
     }
 
+    [[nodiscard]] auto eyeAngles() const noexcept
+    {
+        return hookContext.patternSearchResults().template get<OffsetToEyeAngles>().of(playerPawn).toOptional();
+    }
+
 private:
     [[nodiscard]] auto sceneObjectUpdaterHandle() const noexcept
     {

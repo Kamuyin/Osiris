@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Features/Combat/GrenadeHelper/GrenadeHelperConfigVariables.h>
 #include <Features/Combat/SniperRifles/NoScopeInaccuracyVis/NoScopeInaccuracyVisConfigVariables.h>
 #include <Features/Hud/BombPlantAlert/BombPlantAlertConfigVariables.h>
 #include <Features/Hud/BombTimer/BombTimerConfigVariables.h>
@@ -98,5 +99,8 @@ using ConfigVariableTypes = TypeList<
     viewmodel_mod_vars::ModifyFov,
     viewmodel_mod_vars::Fov,
     no_scope_inaccuracy_vis_vars::Enabled,
-    BombPlantAlertEnabled
+    BombPlantAlertEnabled,
+    grenade_helper_vars::Enabled,
+    grenade_helper_vars::ShowAimIndicator,
+    grenade_helper_vars::CircleDistance
 >;
