@@ -1,6 +1,7 @@
 #pragma once
 
 #include <CS2/Classes/EntitySystem/CEntityHandle.h>
+#include <CS2/Classes/EntitySystem/CEntityIndex.h>
 #include <CS2/Classes/SceneObjectUpdaterHandle_t.h>
 
 #include "C_BaseModelEntity.h"
@@ -21,6 +22,7 @@ struct C_CSPlayerPawn : C_BaseModelEntity {
     using m_flFlashBangTime = float;
     using sceneObjectUpdaterHandle = SceneObjectUpdaterHandle_t*;
     using m_bIsScoped = bool;
+    using m_iIDEntIndex = CEntityIndex;
 };
 
 }
