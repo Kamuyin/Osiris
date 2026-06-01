@@ -20,6 +20,7 @@
     <ClInclude Include="Config\ConfigSchema.h" />
     <ClInclude Include="Config\ConfigState.h" />
     <ClInclude Include="Config\ConfigStringConversionState.h" />
+    <ClInclude Include="Config\ConfigString.h" />
     <ClInclude Include="Config\ConfigToString.h" />
     <ClInclude Include="Config\ConfigVariable.h" />
     <ClInclude Include="Config\ConfigVariableChangeHandler.h" />
@@ -166,6 +167,10 @@
     <ClInclude Include="Features\Hud\PostRoundTimer\PostRoundTimerPanelFactory.h" />
     <ClInclude Include="Features\Hud\PostRoundTimer\PostRoundTimerPanelParams.h" />
     <ClInclude Include="Features\Hud\PostRoundTimer\PostRoundTimerState.h" />
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslate.h" />
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslateConfigVariables.h" />
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslateProvider.h" />
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslateState.h" />
     <ClInclude Include="Features\Sound\BombBeepVisualizer.h" />
     <ClInclude Include="Features\Sound\BombDefuseVisualizer.h" />
     <ClInclude Include="Features\Sound\BombPlantVisualizer.h" />
@@ -371,6 +376,7 @@
     <ClInclude Include="MemoryPatterns\PatternFinders.h" />
     <ClInclude Include="MemoryPatterns\PatternTypes\BaseModelEntityPatternTypes.h" />
     <ClInclude Include="MemoryPatterns\PatternTypes\C4PatternTypes.h" />
+    <ClInclude Include="MemoryPatterns\PatternTypes\ChatPatternTypes.h" />
     <ClInclude Include="MemoryPatterns\PatternTypes\ClientPatternTypes.h" />
     <ClInclude Include="MemoryPatterns\PatternTypes\ConVarPatternTypes.h" />
     <ClInclude Include="MemoryPatterns\PatternTypes\CvarPatternTypes.h" />
@@ -412,6 +418,7 @@
     <ClInclude Include="MemoryPatterns\PatternTypes\WeaponVDataPatternTypes.h" />
     <ClInclude Include="MemoryPatterns\Windows\BaseModelEntityPatternsWindows.h" />
     <ClInclude Include="MemoryPatterns\Windows\C4PatternsWindows.h" />
+    <ClInclude Include="MemoryPatterns\Windows\ChatPatternsWindows.h" />
     <ClInclude Include="MemoryPatterns\Windows\ClientPatternsWindows.h" />
     <ClInclude Include="MemoryPatterns\Windows\ConVarPatternsWindows.h" />
     <ClInclude Include="MemoryPatterns\Windows\CvarPatternsWindows.h" />
@@ -520,6 +527,7 @@
     <ClInclude Include="SDL\SdlFunctions.h" />
     <ClInclude Include="UI\Panorama\CombatTab.h" />
     <ClInclude Include="UI\Panorama\HudTab.h" />
+    <ClInclude Include="UI\Panorama\MiscTab.h" />
     <ClInclude Include="UI\Panorama\OnOffDropdownSelectionChangeHandler.h" />
     <ClInclude Include="UI\Panorama\PanoramaCommandDispatcher.h" />
     <ClInclude Include="UI\Panorama\PanoramaGUI.h" />
@@ -652,6 +660,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>winhttp.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -679,6 +688,7 @@
       <EnableUAC>false</EnableUAC>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <EntryPointSymbol>DllMain</EntryPointSymbol>
+      <AdditionalDependencies>winhttp.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

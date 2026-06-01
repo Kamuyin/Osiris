@@ -22,6 +22,7 @@ STRONG_TYPE_ALIAS(ViewRenderPointer, cs2::CViewRender**);
 STRONG_TYPE_ALIAS(LocalPlayerControllerPointer, cs2::CCSPlayerController**);
 STRONG_TYPE_ALIAS(ManageGlowSceneObjectPointer, cs2::ManageGlowSceneObject*);
 STRONG_TYPE_ALIAS(PointerToClientMode, cs2::ClientModeCSNormal*);
+STRONG_TYPE_ALIAS(ClientCommandInterfacePointer, void**);
 
 #if IS_WIN64()
 STRONG_TYPE_ALIAS(SetSceneObjectAttributeFloat4, void(*)(cs2::SceneObjectAttributes::FloatAttributes* attributes, unsigned int attributeNameHash, float value[4]));

@@ -2,6 +2,7 @@
 
 #include "BaseModelEntityPatternsWindows.h"
 #include "C4PatternsWindows.h"
+#include "ChatPatternsWindows.h"
 #include "ClientPatternsWindows.h"
 #include "ConVarPatternsWindows.h"
 #include "CvarPatternsWindows.h"

@@ -31,6 +31,7 @@ constexpr auto kClientPatterns = []() consteval {
     constexpr auto builder = PatternPoolBuilder<TempPatternPool<2000, 100>>{}
         .ADD_PATTERNS(BaseModelEntityPatterns)
         .ADD_PATTERNS(C4Patterns)
+        .ADD_PATTERNS(ChatPatterns)
         .ADD_PATTERNS(ClientPatterns)
         .ADD_PATTERNS(CvarPatterns)
         .ADD_PATTERNS(EntityPatterns)

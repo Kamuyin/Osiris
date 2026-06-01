@@ -16,6 +16,7 @@
 #include "PanoramaCommandDispatcher.h"
 #include "CombatTab.h"
 #include "HudTab.h"
+#include "MiscTab.h"
 #include "SoundTab.h"
 #include "VisualsTab.h"
 #include "Tabs/VisualsTab/ViewmodelModPreviewPanel.h"
@@ -150,6 +151,7 @@ public:
 
             hookContext.template make<CombatTab>().init(guiPanel);
             hookContext.template make<HudTab>().init(guiPanel);
+            hookContext.template make<MiscTab>().init(guiPanel);
             hookContext.template make<VisualsTab>().init(guiPanel);
             hookContext.template make<SoundTab>().init(guiPanel);
         }
@@ -213,6 +215,7 @@ public:
         auto&& mainMenu = hookContext.template make<ClientPanel>(mainMenuPointer ? *mainMenuPointer : nullptr).uiPanel();
         hookContext.template make<CombatTab>().updateFromConfig(mainMenu);
         hookContext.template make<HudTab>().updateFromConfig(mainMenu);
+        hookContext.template make<MiscTab>().updateFromConfig(mainMenu);
         hookContext.template make<VisualsTab>().updateFromConfig(mainMenu);
         hookContext.template make<SoundTab>().updateFromConfig(mainMenu);
     }

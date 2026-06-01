@@ -2,6 +2,7 @@
 
 #include "BaseModelEntityPatternsLinux.h"
 #include "C4PatternsLinux.h"
+#include "ChatPatternsLinux.h"
 #include "ClientPatternsLinux.h"
 #include "ConVarPatternsLinux.h"
 #include "CvarPatternsLinux.h"

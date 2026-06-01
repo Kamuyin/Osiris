@@ -175,6 +175,12 @@
     <Filter Include="Features\Common">
       <UniqueIdentifier>{514d588e-9075-46df-a4c7-7eab59b608ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Features\Misc">
+      <UniqueIdentifier>{2d38137b-0106-4d45-bcc8-415f1ae012fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\Misc\ChatTranslate">
+      <UniqueIdentifier>{97091101-0735-4549-9c96-00b94b31e9e1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Features\Visuals\ModelGlow\TickingBombModelGlow">
       <UniqueIdentifier>{ea04385e-4e37-4d1d-b6ac-d6ca160ee866}</UniqueIdentifier>
     </Filter>
@@ -307,6 +313,9 @@
       <Filter>MemoryAllocation</Filter>
     </ClInclude>
     <ClInclude Include="MemoryPatterns\Windows\ClientPatternsWindows.h">
+      <Filter>MemoryPatterns\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPatterns\Windows\ChatPatternsWindows.h">
       <Filter>MemoryPatterns\Windows</Filter>
     </ClInclude>
     <ClInclude Include="MemoryPatterns\Windows\GameRulesPatternsWindows.h">
@@ -1108,6 +1117,9 @@
     <ClInclude Include="MemoryPatterns\PatternTypes\ClientPatternTypes.h">
       <Filter>MemoryPatterns\PatternTypes</Filter>
     </ClInclude>
+    <ClInclude Include="MemoryPatterns\PatternTypes\ChatPatternTypes.h">
+      <Filter>MemoryPatterns\PatternTypes</Filter>
+    </ClInclude>
     <ClInclude Include="MemoryPatterns\PatternTypes\EntityPatternTypes.h">
       <Filter>MemoryPatterns\PatternTypes</Filter>
     </ClInclude>
@@ -1681,6 +1693,9 @@
     <ClInclude Include="Config\ConfigStringConversionState.h">
       <Filter>Config</Filter>
     </ClInclude>
+    <ClInclude Include="Config\ConfigString.h">
+      <Filter>Config</Filter>
+    </ClInclude>
     <ClInclude Include="Config\ConfigToString.h">
       <Filter>Config</Filter>
     </ClInclude>
@@ -1722,6 +1737,18 @@
     </ClInclude>
     <ClInclude Include="Features\Hud\PostRoundTimer\PostRoundTimerPanelParams.h">
       <Filter>Features\Hud\PostRoundTimer</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslate.h">
+      <Filter>Features\Misc\ChatTranslate</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslateConfigVariables.h">
+      <Filter>Features\Misc\ChatTranslate</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslateProvider.h">
+      <Filter>Features\Misc\ChatTranslate</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Misc\ChatTranslate\ChatTranslateState.h">
+      <Filter>Features\Misc\ChatTranslate</Filter>
     </ClInclude>
     <ClInclude Include="Features\Sound\SoundVisualizationConfigVariables.h">
       <Filter>Features\Sound</Filter>
@@ -1946,6 +1973,9 @@
       <Filter>EntryPoints</Filter>
     </ClInclude>
     <ClInclude Include="UI\Panorama\OnOffDropdownSelectionChangeHandler.h">
+      <Filter>UI\Panorama</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Panorama\MiscTab.h">
       <Filter>UI\Panorama</Filter>
     </ClInclude>
     <ClInclude Include="UI\Panorama\Tabs\VisualsTab\PlayerInfoInWorldDropdownSelectionChangeHandler.h">

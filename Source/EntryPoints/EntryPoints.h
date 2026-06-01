@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GlobalContext/GlobalContext.h"
+#include <Features/Misc/ChatTranslate/ChatTranslate.h>
 #include "Hooks/PeepEventsHook.h"
 #include "Utils/ReturnAddress.h"
 
@@ -44,6 +45,7 @@ int SDLHook_PeepEvents(void* events, int numevents, int action, unsigned minType
     hookContext.template make<WeaponModelGlowPreview>().onUnload();
     hookContext.template make<NoScopeInaccuracyVis>().onUnload();
     hookContext.template make<BombPlantAlert>().onUnload();
+    hookContext.template make<ChatTranslate>().uninstallHook();
 
     hookContext.template make<EntitySystem>().forEachNetworkableEntityIdentity([&hookContext](const auto& entityIdentity) {
         auto&& baseEntity = hookContext.template make<BaseEntity>(static_cast<cs2::C_BaseEntity*>(entityIdentity.entity));
@@ -73,6 +75,7 @@ void ViewRenderHook_onRenderStart(cs2::CViewRender* thisptr) noexcept
     SoundFeatures{hookContext.soundWatcherState(), hookContext.hooks().viewRenderHook, hookContext}.runOnViewMatrixUpdate();
 
     hookContext.make<NoScopeInaccuracyVis>().update();
+    hookContext.make<ChatTranslate>().update();
     hookContext.make<RenderingHookEntityLoop>().run();
     hookContext.make<GlowSceneObjects>().removeUnreferencedObjects();
     hookContext.make<DefusingAlert>().run();

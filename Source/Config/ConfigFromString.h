@@ -1,6 +1,7 @@
 #pragma once
 
 #include <span>
+#include <type_traits>
 
 #include "ConfigStringConversionState.h"
 #include <Platform/Macros/FunctionAttributes.h>
@@ -60,6 +61,12 @@ public:
             valueSetter(value);
     }
 
+    void string(const char8_t* key, auto&& valueSetter, auto&& valueGetter)
+    {
+        if (std::remove_cvref_t<decltype(valueGetter())> value; parseString(key, value))
+            valueSetter(value);
+    }
+
 private:
     [[nodiscard]] bool parseBool(const char8_t* key, bool& value) noexcept
     {
@@ -83,6 +90,23 @@ private:
         if (shouldReadMe()) {
             const auto previousReadIndex = readIndex;
             if (readUntilStartOfValue(key) && parseUint(value)) {
+                parsed = true;
+                markElementReadAtCurrentNestingLevel();
+            } else {
+                readIndex = previousReadIndex;
+            }
+        }
+        increaseIndexInNestingLevel();
+        return parsed;
+    }
+
+    template <typename ConfigStringType>
+    [[nodiscard]] bool parseString(const char8_t* key, ConfigStringType& value) noexcept
+    {
+        bool parsed = false;
+        if (shouldReadMe()) {
+            const auto previousReadIndex = readIndex;
+            if (readUntilStartOfValue(key) && parseString(value)) {
                 parsed = true;
                 markElementReadAtCurrentNestingLevel();
             } else {
@@ -201,6 +225,46 @@ private:
         }
 
         readIndex = previousReadIndex;
+        return false;
+    }
+
+    template <typename ConfigStringType>
+    [[nodiscard]] bool parseString(ConfigStringType& result) noexcept
+    {
+        if (!readChar(u8'"'))
+            return false;
+
+        ConfigStringType parsed;
+        std::size_t parsedSize = 0;
+        while (readIndex < buffer.size()) {
+            const auto ch = buffer[readIndex++];
+            if (ch == u8'"') {
+                parsed.value[parsedSize] = '\0';
+                parsed.size = parsedSize;
+                result = parsed;
+                return true;
+            }
+
+            char decoded{};
+            if (ch == u8'\\') {
+                if (readIndex >= buffer.size())
+                    return false;
+                switch (buffer[readIndex++]) {
+                case u8'"': decoded = '"'; break;
+                case u8'\\': decoded = '\\'; break;
+                case u8'n': decoded = '\n'; break;
+                case u8'r': decoded = '\r'; break;
+                case u8't': decoded = '\t'; break;
+                default: return false;
+                }
+            } else {
+                decoded = static_cast<char>(ch);
+            }
+
+            if (parsedSize + 1 < sizeof(parsed.value))
+                parsed.value[parsedSize++] = decoded;
+        }
+
         return false;
     }
 

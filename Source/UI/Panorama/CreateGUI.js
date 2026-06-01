@@ -145,6 +145,14 @@ $.Osiris = (function () {
 
     $.CreatePanel('Label', soundTabButton, '', { text: "Sound" });
 
+    var miscTabButton = $.CreatePanel('RadioButton', centerContainer, 'misc_button', {
+      group: "SettingsNavBar",
+      class: "content-navbar__tabs__btn",
+      onactivate: "$.Osiris.navigateToTab('misc');"
+    });
+
+    $.CreatePanel('Label', miscTabButton, '', { text: "Misc" });
+
     var rightContainer = $.CreatePanel('Panel', navbar, '', {
         style: "horizontal-align: right; flow-children: right; height: 100%; margin-right: 70px;"
     });
@@ -420,6 +428,28 @@ u8R"(
     textEntry.SetPanelEvent('onmouseout', function () { if (!textEntry.BHasKeyFocus()) textEntry.style.backgroundColor = 'none'; });
   }
 
+  var createTextEntry = function (parent, name, section, id, maxChars) {
+    var container = $.CreatePanel('Panel', parent, '', {
+      class: "SettingsMenuDropdownContainer"
+    });
+
+    $.CreatePanel('Label', container, '', {
+      class: "half-width",
+      text: name
+    });
+
+    var textEntry = $.CreatePanel('TextEntry', container, id, {
+      maxchars: String(maxChars),
+      style: "width: 300px; horizontal-align: right; margin-right: 8px; padding-left: 10px; text-align: left; font-size: 20px; color: #ccccccff; font-weight: bold; font-family: Stratum2, notosans, 'Arial Unicode MS'; border: 2px solid #cccccc15;"
+    });
+
+    textEntry.SetPanelEvent('ontextentrysubmit', function () { $.Osiris.addCommand('set', section + '/' + id + '/' + encodeURIComponent(textEntry.text)); });
+    textEntry.SetPanelEvent('onfocus', function () { textEntry.style.backgroundColor = 'gradient(linear, 100% 0%, 0% 0%, from(#00000080), color-stop(0, #00000060), to(#00000080))'; });
+    textEntry.SetPanelEvent('onblur', function () { textEntry.style.backgroundColor = 'none'; $.Osiris.addCommand('set', section + '/' + id + '/' + encodeURIComponent(textEntry.text)); });
+    textEntry.SetPanelEvent('onmouseover', function () { if (!textEntry.BHasKeyFocus()) textEntry.style.backgroundColor = 'gradient(linear, 100% 0%, 0% 0%, from(#000000ff), color-stop(0, #00000000), to(#00000050));'; });
+    textEntry.SetPanelEvent('onmouseout', function () { if (!textEntry.BHasKeyFocus()) textEntry.style.backgroundColor = 'none'; });
+  }
+
   var createHueSlider = function (parent, name, id, min, max) {
     var container = $.CreatePanel('Panel', parent, '', {
       class: "SettingsMenuDropdownContainer"
@@ -486,6 +516,21 @@ u8R"(
   var time = createSection(hud, 'Time');
   separator(time);
   createYesNoDropDown(time, "Show Post-round Timer", 'hud', 'postround_timer');
+
+  var misc = createTab('misc');
+
+  var chatTranslate = createSection(misc, 'Chat Translate');
+  createYesNoDropDown(chatTranslate, "Enable Chat Translate", 'misc', 'chat_translate');
+  separator(chatTranslate);
+  createDropDown(chatTranslate, "Translation Provider", 'misc', 'chat_translate_provider', ['DeepL', 'Microsoft Translate']);
+  separator(chatTranslate);
+  createDropDown(chatTranslate, "Target Language", 'misc', 'chat_translate_target_language', ['English', 'German', 'French', 'Spanish', 'Portuguese', 'Russian', 'Turkish', 'Polish', 'Japanese', 'Korean', 'Chinese']);
+  separator(chatTranslate);
+  createTextEntry(chatTranslate, "DeepL API Key", 'misc', 'chat_translate_deepl_api_key', 255);
+  separator(chatTranslate);
+  createTextEntry(chatTranslate, "Microsoft API Key", 'misc', 'chat_translate_microsoft_api_key', 255);
+  separator(chatTranslate);
+  createTextEntry(chatTranslate, "Microsoft Region", 'misc', 'chat_translate_microsoft_region', 63);
 
   var visuals = createVisualsTab();
 

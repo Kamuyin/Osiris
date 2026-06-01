@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstddef>
 #include <span>
+#include <string_view>
 
 #include "ConfigParams.h"
 #include "ConfigStringConversionState.h"
@@ -66,6 +67,11 @@ public:
         writeUint(key, valueGetter());
     }
 
+    void string(const char8_t* key, auto&& /* valueSetter */, auto&& valueGetter)
+    {
+        writeStringValue(key, valueGetter().view());
+    }
+
 private:
     void writeBool(const char8_t* key, bool value) noexcept
     {
@@ -84,6 +90,18 @@ private:
         if (shouldWriteMe()) {
             const auto previousWriteIndex = writeIndex;
             if (writeCommaAfterPreviousElement() && writeKey(key) && writeUint(value))
+                increaseConversionIndexInNestingLevel();
+            else
+                writeIndex = previousWriteIndex;
+        }
+        increaseIndexInNestingLevel();
+    }
+
+    void writeStringValue(const char8_t* key, std::string_view value) noexcept
+    {
+        if (shouldWriteMe()) {
+            const auto previousWriteIndex = writeIndex;
+            if (writeCommaAfterPreviousElement() && writeKey(key) && writeEscapedString(value))
                 increaseConversionIndexInNestingLevel();
             else
                 writeIndex = previousWriteIndex;
@@ -170,6 +188,43 @@ private:
     [[nodiscard]] bool writeBool(bool value) noexcept
     {
         return writeString(value ? u8"true" : u8"false");
+    }
+
+    [[nodiscard]] bool writeEscapedString(std::string_view value) noexcept
+    {
+        if (!writeChar(u8'"'))
+            return false;
+
+        for (const char ch : value) {
+            switch (ch) {
+            case '"':
+                if (!writeString(u8"\\\""))
+                    return false;
+                break;
+            case '\\':
+                if (!writeString(u8"\\\\"))
+                    return false;
+                break;
+            case '\n':
+                if (!writeString(u8"\\n"))
+                    return false;
+                break;
+            case '\r':
+                if (!writeString(u8"\\r"))
+                    return false;
+                break;
+            case '\t':
+                if (!writeString(u8"\\t"))
+                    return false;
+                break;
+            default:
+                if (static_cast<unsigned char>(ch) < 0x20 || !writeChar(static_cast<char8_t>(ch)))
+                    return false;
+                break;
+            }
+        }
+
+        return writeChar(u8'"');
     }
 
     [[nodiscard]] bool writeChar(char8_t c) noexcept

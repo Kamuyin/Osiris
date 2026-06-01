@@ -18,6 +18,7 @@ public:
         configConversion.beginRoot();
         combatObject(configConversion);
         hudObject(configConversion);
+        miscObject(configConversion);
         visualsObject(configConversion);
         soundObject(configConversion);
         return configConversion.endRoot();
@@ -57,6 +58,22 @@ private:
 
         configConversion.beginObject(u8"BombPlantAlert");
         configConversion.boolean(u8"Enabled", loadVariable<BombPlantAlertEnabled>(), saveVariable<BombPlantAlertEnabled>());
+        configConversion.endObject();
+
+        configConversion.endObject();
+    }
+
+    void miscObject(auto&& configConversion)
+    {
+        configConversion.beginObject(u8"Misc");
+
+        configConversion.beginObject(u8"ChatTranslate");
+        configConversion.boolean(u8"Enabled", loadVariable<chat_translate_vars::Enabled>(), saveVariable<chat_translate_vars::Enabled>());
+        configConversion.uint(u8"Provider", loadVariable<chat_translate_vars::Provider>(), saveVariable<chat_translate_vars::Provider>());
+        configConversion.uint(u8"TargetLanguage", loadVariable<chat_translate_vars::TargetLanguage>(), saveVariable<chat_translate_vars::TargetLanguage>());
+        configConversion.string(u8"DeepLApiKey", loadVariable<chat_translate_vars::DeepLApiKey>(), saveVariable<chat_translate_vars::DeepLApiKey>());
+        configConversion.string(u8"MicrosoftApiKey", loadVariable<chat_translate_vars::MicrosoftApiKey>(), saveVariable<chat_translate_vars::MicrosoftApiKey>());
+        configConversion.string(u8"MicrosoftRegion", loadVariable<chat_translate_vars::MicrosoftRegion>(), saveVariable<chat_translate_vars::MicrosoftRegion>());
         configConversion.endObject();
 
         configConversion.endObject();
