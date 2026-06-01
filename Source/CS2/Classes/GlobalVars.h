@@ -9,7 +9,7 @@ struct GlobalVars {
     PAD(48); // FIXME: get offset to curtime dynamically
     float curtime;
     using frametime = float;
-    using m_szMapPath = const char*;
+    using m_szMapPath = char;
 };
 
 }
