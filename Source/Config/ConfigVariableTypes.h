@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Features/Combat/SniperCrosshair/SniperCrosshairConfigVariables.h>
 #include <Features/Combat/SniperRifles/NoScopeInaccuracyVis/NoScopeInaccuracyVisConfigVariables.h>
 #include <Features/Hud/BombPlantAlert/BombPlantAlertConfigVariables.h>
 #include <Features/Hud/BombTimer/BombTimerConfigVariables.h>
@@ -98,5 +99,6 @@ using ConfigVariableTypes = TypeList<
     viewmodel_mod_vars::ModifyFov,
     viewmodel_mod_vars::Fov,
     no_scope_inaccuracy_vis_vars::Enabled,
-    BombPlantAlertEnabled
+    BombPlantAlertEnabled,
+    sniper_crosshair_vars::Enabled
 >;

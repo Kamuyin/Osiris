@@ -235,6 +235,9 @@
     <Filter Include="Features\Combat">
       <UniqueIdentifier>{a7e69fbf-3ca6-470a-abde-6380959510c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Features\Combat\SniperCrosshair">
+      <UniqueIdentifier>{d20a24cd-3533-4fb7-86fc-ef5c798392d3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Features\Combat\SniperRifles">
       <UniqueIdentifier>{4abe2bc9-1abb-4667-8119-82968a9df3d8}</UniqueIdentifier>
     </Filter>
@@ -1854,6 +1857,15 @@
     </ClInclude>
     <ClInclude Include="CS2\Constants\CrosshairColorIndex.h">
       <Filter>CS2\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Combat\SniperCrosshair\SniperCrosshair.h">
+      <Filter>Features\Combat\SniperCrosshair</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Combat\SniperCrosshair\SniperCrosshairConfigVariables.h">
+      <Filter>Features\Combat\SniperCrosshair</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Combat\SniperCrosshair\SniperCrosshairState.h">
+      <Filter>Features\Combat\SniperCrosshair</Filter>
     </ClInclude>
     <ClInclude Include="Features\Combat\SniperRifles\NoScopeInaccuracyVis\NoScopeInaccuracyVis.h">
       <Filter>Features\Combat\SniperRifles\NoScopeInaccuracyVis</Filter>

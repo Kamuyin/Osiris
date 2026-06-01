@@ -3,6 +3,7 @@
 #include <type_traits>
 
 #include <Features/Combat/SniperRifles/NoScopeInaccuracyVis/NoScopeInaccuracyVis.h>
+#include <Features/Combat/SniperCrosshair/SniperCrosshair.h>
 #include <Features/Hud/BombPlantAlert/BombPlantAlert.h>
 #include <Features/Hud/BombTimer/BombTimer.h>
 #include <Features/Hud/DefusingAlert/DefusingAlert.h>
@@ -207,6 +208,12 @@ private:
     {
         if (newValue == false)
             hookContext.template make<NoScopeInaccuracyVis>().onDisable();
+    }
+
+    ON_CHANGE(sniper_crosshair_vars::Enabled)
+    {
+        if (newValue == false)
+            hookContext.template make<SniperCrosshair>().onDisable();
     }
 
     ON_CHANGE(BombPlantAlertEnabled)

@@ -467,6 +467,8 @@ u8R"(
   var noScope = createSection(sniperRiflesTab, 'No scope');
   separator(noScope);
   createYesNoDropDown(noScope, "Visualize Inaccuracy When Not Using a Scope", 'combat', 'no_scope_inacc_vis');
+  separator(noScope);
+  createYesNoDropDown(noScope, "Show Center Dot While Scoped With Sniper Rifles", 'combat', 'sniper_crosshair');
 
   $.Osiris.navigateToSubTab('combat', 'sniper_rifles');
 

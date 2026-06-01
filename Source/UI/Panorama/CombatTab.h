@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Features/Combat/SniperCrosshair/SniperCrosshairConfigVariables.h>
 #include <GameClient/Panorama/PanoramaDropDown.h>
 #include <EntryPoints/GuiEntryPoints.h>
 #include <Platform/Macros/FunctionAttributes.h>
@@ -16,11 +17,13 @@ public:
     void init(auto&& guiPanel) const
     {
         initDropDown<OnOffDropdownSelectionChangeHandler<HookContext, no_scope_inaccuracy_vis_vars::Enabled>>(guiPanel, "no_scope_inacc_vis");
+        initDropDown<OnOffDropdownSelectionChangeHandler<HookContext, sniper_crosshair_vars::Enabled>>(guiPanel, "sniper_crosshair");
     }
 
     void updateFromConfig(auto&& mainMenu) const noexcept
     {
         setDropDownSelectedIndex(mainMenu, "no_scope_inacc_vis", !GET_CONFIG_VAR(no_scope_inaccuracy_vis_vars::Enabled));
+        setDropDownSelectedIndex(mainMenu, "sniper_crosshair", !GET_CONFIG_VAR(sniper_crosshair_vars::Enabled));
     }
 
 private:
